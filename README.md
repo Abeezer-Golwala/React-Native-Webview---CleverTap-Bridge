@@ -1,6 +1,7 @@
 # React-Native-Webview-CleverTap-Bridge
 
 Use the below code for making the page inside the webview.
+
 https://github.com/Abeezer-Golwala/React-Native-Webview-CleverTap-Bridge/blob/master/Webview%20Page
 
 When sending an event through webview mention the Type parameter as event and pass the event properties in json format as in the following code:
