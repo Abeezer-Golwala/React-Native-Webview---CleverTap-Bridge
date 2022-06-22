@@ -69,24 +69,40 @@ const App: () => Node = () => {
             javaScriptEnabled={true}
             onMessage={event => {
               //Converting data recived from webveiw to json object 
-              const test = JSON.parse(event.nativeEvent.data);
+              const clevertapdata = JSON.parse(event.nativeEvent.data);
+              console.log(clevertapdata.Type);
               //checking the type of the data recieved from webview if its an event, onuserlogin or profile set data.
-                if (JSON.stringify(Object.values(test)[0]) == "\"event\""){
-                  CleverTap.recordEvent(Object.keys(test)[1],Object.values(test)[1]);
-                  console.log(test);
+                if (JSON.stringify(clevertapdata.Type) == "\"event\""){
+                  CleverTap.recordEvent(clevertapdata.EventName,clevertapdata.Payload);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.Payload));
                 }
-                else if (JSON.stringify(Object.values(test)[0]) == "\"onuserlogin\""){
-                  CleverTap.onUserLogin(Object.values(test)[1]);
-                  console.log(test);
+                else if (JSON.stringify(clevertapdata.Type) == "\"onuserlogin\""){
+                  CleverTap.onUserLogin(clevertapdata.Payload);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.Payload));
                 }
-                else if (JSON.stringify(Object.values(test)[0]) == "\"profileset\""){
-                  CleverTap.profileSet(Object.values(test)[1]);
-                  console.log(test);
+                else if (JSON.stringify(clevertapdata.Type) == "\"profileset\""){
+                  CleverTap.profileSet(clevertapdata.Payload);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.Payload));
+                }
+                else if (JSON.stringify(clevertapdata.Type) == "\"chargedevent\""){
+                  CleverTap.recordChargedEvent(clevertapdata.chargedetails, clevertapdata.items);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.chargedetails)+"\n"+JSON.stringify(clevertapdata.items));
+                }
+                else if (JSON.stringify(clevertapdata.Type) == "\"profileSetMultiValuesForKey\""){
+                  CleverTap.profileSetMultiValuesForKey(clevertapdata.values, clevertapdata.key);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.key)+"\n"+JSON.stringify(clevertapdata.values));
+                }
+                else if (JSON.stringify(clevertapdata.Type) == "\"profileRemoveMultiValueForKey\""){
+                  CleverTap.profileRemoveMultiValueForKey(clevertapdata.value, clevertapdata.key);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.key)+"\n"+JSON.stringify(clevertapdata.value));
+                }
+                else if (JSON.stringify(clevertapdata.Type) == "\"profileAddMultiValueForKey\""){
+                  CleverTap.profileAddMultiValueForKey(clevertapdata.value, clevertapdata.key);
+                  console.log(JSON.stringify(clevertapdata.Type)+"\n"+JSON.stringify(clevertapdata.key)+"\n"+JSON.stringify(clevertapdata.value));
                 }
               }
             }
-          
-            style={{ marginTop: 20 }}
+            style={{ marginTop: 20, flex:1 }}
           />
       </View>
   );
