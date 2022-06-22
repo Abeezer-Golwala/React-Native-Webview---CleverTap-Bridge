@@ -5,20 +5,35 @@
 	<body>
 		<script type="text/javascript">
 			function reactevent(){
-                window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",'Product Viewed': {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00}}));
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",EventName : 'Product Viewed', Payload: {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00}}));
 			}
 			function reactlogin(){
-                window.ReactNativeWebView.postMessage(JSON.stringify({Type:"onuserlogin",Payload:{'Name': 'Abctest', 'Identity': '9789', 'Email' : 'hello2@react.com', 'MSG-push':true, 'MSG-email':true,'MSG-sms':true, 'MSG-whatsapp':true}}));
-
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"onuserlogin",Payload:{'Name': 'Abctest', 'Identity': '9789', 'Email' : 'hello2@react.com', 'MSG-push':true, 'MSG-email':true,'MSG-sms':true, 'MSG-whatsapp':true}}));
 			}
 			function reactpushprofile(){
-                window.ReactNativeWebView.postMessage(JSON.stringify({Type:"profileset",Payload:{'Gender': 'Male','test':'hello','test2':["hello","helloe"]}}));
-
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"profileset",Payload:{'Gender': 'Male','test':'hello','test2':["hello","helloe"]}}));
+			}
+			function chargedEvent(){
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"chargedevent",chargedetails:{'totalValue': 20, 'category': 'books'},items:[{'title': 'book1'}, {'title': 'book2'}, {'title': 'book3'}]}));
+			}
+			function profileSetMultiValuesForKey(){
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"profileSetMultiValuesForKey",values:['a','b','c'],key:'letters'}));
+			}
+			function profileRemoveMultiValueForKey(){
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"profileRemoveMultiValueForKey",value:'b',key:'letters'}));
+			}
+			function profileAddMultiValueForKey(){
+               		 	window.ReactNativeWebView.postMessage(JSON.stringify({Type:"profileAddMultiValueForKey",value:'d',key:'letters'}));
 			}
 		</script>
 		<form>  
- 		 <input type = "button" onclick = "reactlogin()" value = "Push Login to React" style="height:250px;font-size: 100px;"><br><br>
-   		 <input type = "button" onclick = "reactpushprofile()" value = "Push profile to React" style="height:250px;font-size: 100px;"><br><br>
-	    <input type = "button" onclick = "reactevent()" value = "Push Event to React" style="height:250px;font-size: 100px;"><br><br>
-      </form>
+ 		 	<input type = "button" onclick = "reactlogin()" value = "Push Login to React" style="height:250px;font-size: 60px;"><br><br>
+			<input type = "button" onclick = "reactpushprofile()" value = "Push profile to React" style="height:250px;font-size: 60px;"><br><br>
+		    	<input type = "button" onclick = "reactevent()" value = "Push Event to React" style="height:250px;font-size: 60px;"><br><br>
+		    	<input type = "button" onclick = "chargedEvent()" value = "Push Charged Event to React" style="height:250px;font-size: 60px;"><br><br>
+		    	<input type = "button" onclick = "profileRemoveMultiValueForKey()" value = "Remove value from Key to React" style="height:250px;font-size: 60px;"><br><br>
+		    	<input type = "button" onclick = "profileAddMultiValueForKey()" value = "Add Value to a Key to React" style="height:250px;font-size: 60px;"><br><br>
+		    	<input type = "button" onclick = "profileSetMultiValuesForKey()" value = "Set MultiValues For Key to React" style="height:250px;font-size: 60px;"><br><br>
+	      	</form>
 	</body>
+</html>
