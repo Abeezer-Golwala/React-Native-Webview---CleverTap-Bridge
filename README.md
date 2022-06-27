@@ -5,8 +5,9 @@ Use the below code for making the page inside the webview.
 https://github.com/Abeezer-Golwala/React-Native-Webview-CleverTap-Bridge/blob/master/Webview%20Page
 
 **PushEvent**<br/>
-When sending an event through webview mention the Type parameter as event and pass the event properties with key name as Payload in json format as in the following code:<br/>
-window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",EventName : 'Product Viewed', Payload: {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00}}));
+When sending an event through webview mention the Type parameter as event, you can pass the event properties with key name as Payload in json format and you can pass date also pass date objects as in the following code<br/>
+const d = new Date(2018, 11, 24);<br/>
+window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",EventName : 'Product Viewed', Payload: {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00, DateViewed:d}}));
 
 **OnUserLogin**<br/>
 When sending an onuserlogin through webview mention the Type parameter as onuserlogin and pass the identities and communication pref with key name as Payload in  json format as in the following code:<br/>
