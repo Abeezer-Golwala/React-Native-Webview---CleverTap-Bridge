@@ -4,8 +4,9 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+		    const date_viewed = new Date(2022, 1, 24);
 			function reactevent(){
-                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",EventName : 'Product Viewed', Payload: {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00}}));
+                		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"event",EventName : 'Product Viewed', Payload: {'Product Name': 'Dairy Milk','Category': 'Chocolate','Amount': 20.00, DateViewed:date_viewed}}}));
 			}
 			function reactlogin(){
                 		window.ReactNativeWebView.postMessage(JSON.stringify({Type:"onuserlogin",Payload:{'Name': 'Abctest', 'Identity': '9789', 'Email' : 'hello2@react.com', 'MSG-push':true, 'MSG-email':true,'MSG-sms':true, 'MSG-whatsapp':true}}));
